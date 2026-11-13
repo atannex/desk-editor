@@ -60,8 +60,6 @@ It combines a configurable editor, editorial CMS, media library, collaboration t
   </tr>
 </table>
 
-<p align="center"><b>Mobile</b><br><img src="https://raw.githubusercontent.com/atannex/desk-editor/main/art/screenshots/mobile-editor.png" alt="Editor on a phone-sized screen" width="320"></p>
-
 ## Installation
 
 ```bash
