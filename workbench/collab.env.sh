@@ -11,3 +11,5 @@ export REVERB_APP_SECRET=desk-local-secret
 export REVERB_HOST=127.0.0.1
 export REVERB_PORT=8080
 export REVERB_SCHEME=http
+export APP_NAME="Desk"
+export DESK_BLOG_NAME="Desk Journal"

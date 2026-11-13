@@ -74,6 +74,10 @@ jobs:
     name: End-to-end (Chromium, Firefox, mobile)
     runs-on: ubuntu-latest
     needs: [php, javascript]
+    env:
+      DB_CONNECTION: sqlite
+      DB_DATABASE: ${{ github.workspace }}/workbench/database/database.sqlite
+      DESK_BLOG_ENABLED: 'true'
     steps:
       - uses: actions/checkout@v4
       - uses: shivammathur/setup-php@v2
@@ -90,12 +94,11 @@ jobs:
       - name: Prepare workbench
         run: |
           mkdir -p workbench/database && touch workbench/database/database.sqlite
-          DB_CONNECTION=sqlite DB_DATABASE=$PWD/workbench/database/database.sqlite vendor/bin/testbench migrate:fresh --force
+          vendor/bin/testbench migrate:fresh --force
           vendor/bin/testbench storage:link
       - name: Start workbench server
         run: |
-          DB_CONNECTION=sqlite DB_DATABASE=$PWD/workbench/database/database.sqlite DESK_BLOG_ENABLED=true \
-            nohup vendor/bin/testbench serve --port=8765 > serve.log 2>&1 &
+          nohup vendor/bin/testbench serve --port=8765 > serve.log 2>&1 &
           for i in $(seq 1 30); do curl -sf -o /dev/null http://127.0.0.1:8765/desk-editor/assets/desk-editor.css && break; sleep 1; done
           curl -sS -o /dev/null -w "login: %{http_code} -> %{redirect_url}\n" http://127.0.0.1:8765/workbench/login
       - run: npx playwright test

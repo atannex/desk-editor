@@ -8,6 +8,13 @@ It combines a configurable editor, editorial CMS, media library, collaboration t
 <x-desk-editor name="body" :value="$post->body" />
 ```
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/atannex/desk-editor/main/art/screenshots/editor-dark.png">
+    <img src="https://raw.githubusercontent.com/atannex/desk-editor/main/art/screenshots/editor-light.png" alt="Desk Editor in the article manager: toolbar, columns, callout and publishing sidebar" width="100%">
+  </picture>
+</p>
+
 ## Features
 
 - **Rich editing:** headings, formatting, lists, tables, columns, callouts, code blocks, math, diagrams, charts, embeds, and Markdown shortcuts.
@@ -19,6 +26,41 @@ It combines a configurable editor, editorial CMS, media library, collaboration t
 - **Integration:** Blade, Livewire, Filament, and a JavaScript API.
 - **Accessibility and responsive UI:** keyboard navigation, reduced-motion support, and mobile-friendly controls.
 - **Localization:** English, French, Spanish, German, Brazilian Portuguese, Arabic, and Simplified Chinese.
+
+## Screenshots
+
+<table>
+  <tr>
+    <td width="50%"><b>Light theme</b><br><img src="https://raw.githubusercontent.com/atannex/desk-editor/main/art/screenshots/editor-light.png" alt="Editor in the light theme"></td>
+    <td width="50%"><b>Dark theme</b><br><img src="https://raw.githubusercontent.com/atannex/desk-editor/main/art/screenshots/editor-dark.png" alt="Editor in the dark theme"></td>
+  </tr>
+  <tr>
+    <td width="50%"><b>Slash commands: type <code>/</code> to insert any block</b><br><img src="https://raw.githubusercontent.com/atannex/desk-editor/main/art/screenshots/slash-menu.png" alt="Slash command menu listing block types"></td>
+    <td width="50%"><b>Bubble menu on any text selection</b><br><img src="https://raw.githubusercontent.com/atannex/desk-editor/main/art/screenshots/bubble-menu.png" alt="Formatting bubble menu above selected text"></td>
+  </tr>
+  <tr>
+    <td width="50%"><b>Comments and suggestion mode</b><br><img src="https://raw.githubusercontent.com/atannex/desk-editor/main/art/screenshots/comments-suggestions.png" alt="Comment thread panel with a tracked insertion and deletion"></td>
+    <td width="50%"><b>Live collaboration with named cursors</b><br><img src="https://raw.githubusercontent.com/atannex/desk-editor/main/art/screenshots/collaboration.png" alt="Another writer’s labelled cursor while co-editing"></td>
+  </tr>
+  <tr>
+    <td width="50%"><b>Diagram editor (Mermaid, live preview)</b><br><img src="https://raw.githubusercontent.com/atannex/desk-editor/main/art/screenshots/diagram-editor.png" alt="Split-screen Mermaid diagram editor with live preview"></td>
+    <td width="50%"><b>Chart editor (bar, line, pie and more)</b><br><img src="https://raw.githubusercontent.com/atannex/desk-editor/main/art/screenshots/chart-editor.png" alt="Chart editor with data grid and live bar chart"></td>
+  </tr>
+  <tr>
+    <td width="50%"><b>Image editor: crop, rotate, flip, filters</b><br><img src="https://raw.githubusercontent.com/atannex/desk-editor/main/art/screenshots/image-editor.png" alt="Image editor with crop handles, presets and sliders"></td>
+    <td width="50%"><b>Media library</b><br><img src="https://raw.githubusercontent.com/atannex/desk-editor/main/art/screenshots/media-library.png" alt="Media library grid with filters and upload zone"></td>
+  </tr>
+  <tr>
+    <td width="50%"><b>Article manager</b><br><img src="https://raw.githubusercontent.com/atannex/desk-editor/main/art/screenshots/articles-dashboard.png" alt="Article list with stats, status tabs and filters"></td>
+    <td width="50%"><b>Analytics</b><br><img src="https://raw.githubusercontent.com/atannex/desk-editor/main/art/screenshots/analytics.png" alt="Analytics dashboard with views chart and KPIs"></td>
+  </tr>
+  <tr>
+    <td width="50%"><b>Public blog</b><br><img src="https://raw.githubusercontent.com/atannex/desk-editor/main/art/screenshots/blog-home.png" alt="Blog home page with featured story"></td>
+    <td width="50%"><b>Reader view: columns, charts, contents sidebar</b><br><img src="https://raw.githubusercontent.com/atannex/desk-editor/main/art/screenshots/blog-article.png" alt="Published article with columns, chart and table of contents"></td>
+  </tr>
+</table>
+
+<p align="center"><b>Mobile</b><br><img src="https://raw.githubusercontent.com/atannex/desk-editor/main/art/screenshots/mobile-editor.png" alt="Editor on a phone-sized screen" width="320"></p>
 
 ## Installation
 
@@ -75,6 +117,8 @@ The first editor on a page injects its stylesheet and script automatically. To m
 The component binds the hidden input and keeps the editor itself under `wire:ignore`.
 
 ### Comments, drafts, and collaboration
+
+<img src="https://raw.githubusercontent.com/atannex/desk-editor/main/art/screenshots/comments-suggestions.png" alt="Comment thread panel with a tracked insertion and deletion">
 
 Enable document-specific features with the corresponding component attributes:
 
@@ -139,6 +183,8 @@ Validation measures visible text, so empty HTML elements do not count as content
 
 ## CMS and public blog
 
+<img src="https://raw.githubusercontent.com/atannex/desk-editor/main/art/screenshots/articles-dashboard.png" alt="Article list with stats, status tabs and filters">
+
 The article manager is available at `/desk/articles`. It includes:
 
 - Draft, review, scheduled, published, and archived states
@@ -157,6 +203,8 @@ DESK_BLOG_ENABLED=true
 The default URL prefix is `/blog`. The blog includes article and category pages, search, related posts, threaded reader comments, RSS/Atom feeds, a sitemap, structured metadata, and analytics.
 
 ## Media processing
+
+<img src="https://raw.githubusercontent.com/atannex/desk-editor/main/art/screenshots/media-library.png" alt="Media library grid with filters and upload zone">
 
 Uploads are recorded in the media library at `/desk/media`.
 
@@ -222,6 +270,8 @@ The package also emits DOM events, including `desk-editor:ready`, `desk-editor:c
 - CMS routes are protected by authorization gates; configure the package gates to match your application's roles and permissions.
 
 ## Development
+
+Regenerate the README screenshots from a running workbench with `node scripts/screenshots.mjs` (environment in `workbench/collab.env.sh`).
 
 ```bash
 composer install

@@ -111,8 +111,8 @@
                     <text x="{{ $padX }}" y="{{ $y($tick) - 5 }}" class="fill-zinc-500 text-[10px] tabular-nums">{{ number_format($tick) }}</text>
                 @endforeach
                 @foreach ($series as $i => $point)
-                    @if ($i % 7 === 0 || $i === $n - 1)
-                        <text x="{{ $points[$i][0] }}" y="{{ $h - 8 }}" text-anchor="{{ $i === 0 ? 'start' : ($i === $n - 1 ? 'end' : 'middle') }}" class="fill-zinc-400 text-[10px]">{{ $point['label'] }}</text>
+                    @if (($i % 7 === 0 && $n - 1 - $i >= 4) || $i === $n - 1)
+                        <text x="{{ $points[$i][0] }}" y="{{ $h - 8 }}" text-anchor="{{ $i === 0 ? 'start' : ($i === $n - 1 ? 'end' : 'middle') }}" class="fill-zinc-500 text-[10px]">{{ $point['label'] }}</text>
                     @endif
                 @endforeach
                 <path d="{{ $area }}" fill="url(#desk-views-fill)"/>

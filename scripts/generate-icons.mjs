@@ -127,8 +127,7 @@ const want = [
   "Eye",
   "EyeOff",
   "Layers",
-  "MonitorPlay",
-];
+  "MonitorPlay",,'MessageSquare','MessageSquarePlus','MessagesSquare','Images','FolderOpen','Asterisk','MousePointerClick','SeparatorHorizontal','Omega','Workflow','ChartColumn','Bookmark','FilePenLine','Crop','RotateCw','FlipHorizontal2','FlipVertical2','PaintBucket','Users','CloudOff','Cloud'];
 const ser = ([tag, attrs]) =>
   "<" +
   tag +

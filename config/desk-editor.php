@@ -59,14 +59,15 @@ return [
             'blockStyle', 'fontFamily', 'fontSize', '|',
             'bold', 'italic', 'underline', 'strike', 'textColor', 'highlight', '|',
             'align', 'bulletList', 'orderedList', 'taskList', 'outdent', 'indent', '|',
-            'link', 'image', 'video', 'table', 'embed', 'callout', 'math', 'insert', '->',
-            'findReplace', 'source', 'toc', 'focusMode', 'fullscreen', 'theme', 'export', 'shortcuts',
+            'link', 'image', 'video', 'gallery', 'table', 'columns', 'embed', 'callout', 'math', 'insert', '->',
+            'comments', 'suggestions', 'findReplace', 'source', 'toc', 'focusMode', 'fullscreen', 'theme', 'export', 'shortcuts',
         ],
         'standard' => [
             'undo', 'redo', '|', 'blockStyle', '|',
             'bold', 'italic', 'underline', 'strike', 'highlight', '|',
             'bulletList', 'orderedList', 'taskList', '|',
-            'link', 'image', 'video', 'table', 'blockquote', 'codeBlock', '->',
+            'link', 'image', 'video', 'table', 'columns', 'blockquote', 'codeBlock', '->',
+            'comments',
             'fullscreen',
         ],
         'minimal' => [

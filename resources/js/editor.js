@@ -971,15 +971,17 @@ export class DeskEditor {
     renderPeers(peers) {
         const unique = [...new Map(peers.map((p) => [p.id || p.name, p])).values()];
         this.presence.hidden = !unique.length;
-        this.presence.replaceChildren(
-            ...unique.slice(0, 5).map((peer) => h('span', {
+        const avatars = unique.slice(0, 5).map((peer) => {
+            const el = h('span', {
                 class: 'de-peer',
-                style: { '--peer': peer.color || '#6366f1' },
                 title: peer.name,
                 text: String(peer.name || '?').split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase(),
-            })),
-            unique.length > 5 ? h('span', { class: 'de-peer de-peer-more', text: `+${unique.length - 5}` }) : null,
-        );
+            });
+            el.style.setProperty('--peer', peer.color || '#6366f1');
+            return el;
+        });
+        if (unique.length > 5) avatars.push(h('span', { class: 'de-peer de-peer-more', text: `+${unique.length - 5}` }));
+        this.presence.replaceChildren(...avatars);
         this.emit('peers', { peers: unique });
     }
 

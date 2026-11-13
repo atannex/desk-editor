@@ -24,7 +24,7 @@ class AssetController extends Controller
 
     public function __invoke(Request $request, string $path): BinaryFileResponse
     {
-        abort_unless((bool) preg_match('#^(desk-editor\.(js|css)|chunks/[A-Za-z0-9_-]+\.js|fonts/KaTeX_[A-Za-z0-9_-]+\.(woff2|woff|ttf))$#', $path), 404);
+        abort_unless((bool) preg_match('#^(desk-editor\.(js|css)|chunks/[A-Za-z0-9_-]+(?:\.[A-Za-z0-9_-]+)*\.js|fonts/KaTeX_[A-Za-z0-9_-]+\.(woff2|woff|ttf))$#', $path), 404);
 
         $file = realpath(__DIR__.'/../../../dist/'.$path);
         abort_unless($file !== false && is_file($file), 404);

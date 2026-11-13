@@ -27,8 +27,21 @@ class EndpointsTest extends TestCase
         $this->get('/desk-editor/assets/fonts/KaTeX_Main-Regular.woff2')->assertOk();
     }
 
+    public function test_code_split_chunks_are_served(): void
+    {
+        $chunks = glob(__DIR__.'/../../dist/chunks/*.js') ?: [];
+        $this->assertNotEmpty($chunks);
+
+        // Every chunk must be reachable, including names with dots (e.g. "mermaid.core-XXXX.js").
+        foreach ($chunks as $chunk) {
+            $this->get('/desk-editor/assets/chunks/'.basename($chunk))->assertOk();
+        }
+    }
+
     public function test_asset_route_rejects_anything_else(): void
     {
+        $this->get('/desk-editor/assets/chunks/../../composer.json')->assertNotFound();
+        $this->get('/desk-editor/assets/chunks/..%2F..%2Fcomposer.json')->assertNotFound();
         $this->get('/desk-editor/assets/../composer.json')->assertNotFound();
         $this->get('/desk-editor/assets/build.mjs')->assertNotFound();
     }
