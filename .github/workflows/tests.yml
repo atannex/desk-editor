@@ -89,7 +89,7 @@ jobs:
       - run: npx playwright install --with-deps chromium firefox
       - name: Prepare workbench
         run: |
-          touch workbench/database/database.sqlite
+          mkdir -p workbench/database && touch workbench/database/database.sqlite
           DB_CONNECTION=sqlite DB_DATABASE=$PWD/workbench/database/database.sqlite vendor/bin/testbench migrate:fresh --force
           vendor/bin/testbench storage:link
       - run: npx playwright test
