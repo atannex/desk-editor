@@ -1,0 +1,18 @@
+laravel: '@testbench'
+
+providers:
+  - Atannex\DeskEditor\DeskEditorServiceProvider
+  - Laravel\Reverb\ApplicationManagerServiceProvider
+  - Laravel\Reverb\ReverbServiceProvider
+
+env:
+  - APP_KEY="base64:YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE="
+  - APP_URL="http://127.0.0.1:8765"
+  - DB_CONNECTION=sqlite
+  - DB_DATABASE="./workbench/database/database.sqlite"
+  - FILESYSTEM_DISK=public
+
+workbench:
+  start: '/workbench/login'
+  discovers:
+    web: true

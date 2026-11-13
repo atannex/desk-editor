@@ -1,0 +1,9 @@
+/vendor
+/node_modules
+/workbench/database/*.sqlite
+/.phpunit.cache
+/.phpunit.result.cache
+composer.lock
+.DS_Store
+/test-results
+/playwright-report

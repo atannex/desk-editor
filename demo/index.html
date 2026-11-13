@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Desk Editor Demo</title>
+    <link rel="stylesheet" href="../dist/desk-editor.css">
+    <style>
+        body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background: #f4f4f5; color: #18181b; }
+        html.dark body { background: #09090b; color: #f4f4f5; }
+        main { max-width: 1100px; margin: 0 auto; padding: 32px 16px 80px; }
+        header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+        header h1 { font-size: 20px; margin: 0; }
+        button.page { border: 1px solid #d4d4d8; background: #fff; border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+        html.dark button.page { background: #18181b; color: #fff; border-color: #3f3f46; }
+        pre#out { white-space: pre-wrap; font-size: 12px; max-height: 240px; overflow: auto; background: #18181b; color: #a7f3d0; padding: 12px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+<main>
+    <header>
+        <h1>atannex/desk-editor</h1>
+        <button class="page" type="button" onclick="document.documentElement.classList.toggle('dark')">Toggle page dark class</button>
+    </header>
+    <form id="form" onsubmit="event.preventDefault(); document.getElementById('out').textContent = new FormData(this).get('body');">
+        <div class="desk-editor" data-desk-editor='{"theme":"auto","toolbar":null,"limit":{"characters":20000},"autosave":{"enabled":false}}'>
+            <textarea name="body" data-desk-input hidden><h1>Quarterly product update</h1><p>Welcome to <strong>Desk Editor</strong> — a <em>premium</em>, <u>first-class</u> rich text editor for Laravel. Select text to see the <mark data-color="#fef08a" style="background-color: #fef08a; color: inherit">bubble menu</mark>, or type <code>/</code> for commands.</p><div data-callout="tip"><p>Tip: press <strong>Ctrl + /</strong> to see every keyboard shortcut.</p></div><h2>What shipped</h2><ul data-type="taskList"><li data-type="taskItem" data-checked="true"><p>Real-time collaboration groundwork</p></li><li data-type="taskItem" data-checked="false"><p>Offline drafts</p></li></ul><ol><li><p>Faster search</p></li><li><p>Better <a href="https://laravel.com">Laravel</a> integration</p></li></ol><blockquote><p>“Simplicity is the ultimate sophistication.”</p></blockquote><pre><code class="language-php">Route::get('/posts/{post}', function (Post $post) {
+    return view('posts.show', ['post' => $post]);
+});</code></pre><p>Euler's identity: <span data-type="inline-math" data-latex="e^{i\pi} + 1 = 0"></span></p><table><tbody><tr><th><p>Plan</p></th><th><p>Seats</p></th><th><p>Price</p></th></tr><tr><td><p>Starter</p></td><td><p>5</p></td><td><p>$19</p></td></tr><tr><td><p>Team</p></td><td><p>25</p></td><td><p>$79</p></td></tr></tbody></table><div data-callout="warning"><p>Remember to run <code>php artisan desk-editor:install</code>.</p></div><p></p></textarea>
+        </div>
+        <p><button class="page" type="submit">Submit form</button></p>
+    </form>
+    <pre id="out"></pre>
+</main>
+<script type="module" src="../dist/desk-editor.js"></script>
+</body>
+</html>
