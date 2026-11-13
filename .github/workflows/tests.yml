@@ -75,8 +75,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: [php, javascript]
     env:
-      DB_CONNECTION: sqlite
-      DB_DATABASE: ${{ github.workspace }}/workbench/database/database.sqlite
       DESK_BLOG_ENABLED: 'true'
     steps:
       - uses: actions/checkout@v4
@@ -93,7 +91,8 @@ jobs:
       - run: npx playwright install --with-deps chromium firefox
       - name: Prepare workbench
         run: |
-          mkdir -p workbench/database && touch workbench/database/database.sqlite
+          # Testbench's own sqlite database: migrate and serve resolve the same file.
+          vendor/bin/testbench workbench:create-sqlite-db --force
           vendor/bin/testbench migrate:fresh --force
           vendor/bin/testbench storage:link
       - name: Start workbench server
