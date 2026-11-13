@@ -8,6 +8,7 @@ providers:
 env:
   - APP_KEY="base64:YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE="
   - FILESYSTEM_DISK=public
+  - DESK_BLOG_ENABLED=true
 
 workbench:
   start: '/workbench/login'
