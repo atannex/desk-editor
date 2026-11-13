@@ -14,6 +14,11 @@
         "tailwindcss"
     ],
     "license": "MIT",
+    "homepage": "https://github.com/atannex/desk-editor",
+    "support": {
+        "issues": "https://github.com/atannex/desk-editor/issues",
+        "source": "https://github.com/atannex/desk-editor"
+    },
     "type": "library",
     "authors": [
         {
